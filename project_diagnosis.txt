@@ -1,0 +1,241 @@
+### Struktura Plików ###
+.:
+apps
+node_modules
+package.json
+packages
+pnpm-lock.yaml
+pnpm-workspace.yaml
+project_diagnosis.txt
+README.md
+turbo.json
+
+./apps:
+kanbanFlow
+
+./apps/kanbanFlow:
+eslint.config.mjs
+next.config.ts
+next-env.d.ts
+node_modules
+package.json
+postcss.config.mjs
+public
+README.md
+src
+tsconfig.json
+
+./apps/kanbanFlow/node_modules:
+@eslint
+eslint
+eslint-config-next
+next
+react
+react-dom
+@tailwindcss
+tailwindcss
+@types
+typescript
+@wookie-monorepo
+
+./apps/kanbanFlow/node_modules/@eslint:
+eslintrc
+
+./apps/kanbanFlow/node_modules/@tailwindcss:
+postcss
+
+./apps/kanbanFlow/node_modules/@types:
+node
+react
+react-dom
+
+./apps/kanbanFlow/node_modules/@wookie-monorepo:
+eslint-config-custom
+
+./apps/kanbanFlow/public:
+file.svg
+globe.svg
+next.svg
+vercel.svg
+window.svg
+
+./apps/kanbanFlow/src:
+app
+
+./apps/kanbanFlow/src/app:
+favicon.ico
+globals.css
+layout.tsx
+page.tsx
+
+./node_modules:
+@eslint
+eslint
+@eslint-community
+eslint-config-next
+eslint-config-turbo
+eslint-import-resolver-node
+eslint-import-resolver-typescript
+eslint-module-utils
+eslint-plugin-import
+eslint-plugin-jsx-a11y
+eslint-plugin-react
+eslint-plugin-react-hooks
+eslint-plugin-turbo
+eslint-scope
+eslint-visitor-keys
+@next
+prettier
+@rushstack
+turbo
+typescript
+@typescript-eslint
+@wookie-monorepo
+
+./node_modules/@eslint:
+config-array
+config-helpers
+core
+eslintrc
+js
+object-schema
+plugin-kit
+
+./node_modules/@eslint-community:
+eslint-utils
+regexpp
+
+./node_modules/@next:
+eslint-plugin-next
+
+./node_modules/@rushstack:
+eslint-patch
+
+./node_modules/@typescript-eslint:
+eslint-plugin
+parser
+project-service
+scope-manager
+tsconfig-utils
+types
+typescript-estree
+type-utils
+utils
+visitor-keys
+
+./node_modules/@wookie-monorepo:
+eslint-config-custom
+
+./packages:
+eslint-config-custom
+lib
+tsconfig
+ui
+
+./packages/eslint-config-custom:
+index.mjs
+node_modules
+package.json
+
+./packages/eslint-config-custom/node_modules:
+@eslint
+eslint-config-next
+eslint-config-turbo
+
+./packages/eslint-config-custom/node_modules/@eslint:
+eslintrc
+
+./packages/lib:
+
+./packages/tsconfig:
+base.json
+nextjs.json
+package.json
+
+./packages/ui:
+\n### package.json (root) ###
+{
+  "name": "wookie-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "typecheck": "turbo check-types"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.2",
+    "turbo": "^2.5.4",
+    "typescript": "^5.5.2" 
+  },
+  "packageManager": "pnpm@9.4.0",
+  "engines": {
+    "node": ">=18.0.0", 
+    "pnpm": ">=9.0.0"
+  }
+}\n### package.json (kanbanFlow) ###
+{
+  "name": "@wookie-monorepo/kanbanflow",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "next": "15.3.4"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@tailwindcss/postcss": "^4",
+    "tailwindcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.4",
+    "@eslint/eslintrc": "^3",
+    "@wookie-monorepo/eslint-config-custom": "workspace:*"
+  }
+}
+\n### package.json (tsconfig) ###
+{
+    "name": "@wookie-monorepo/tsconfig",
+    "version": "0.0.0",
+    "private": true,
+    "files": ["base.json", "nextjs.json"]
+  }\n### package.json (eslint) ###
+{
+    "name": "@wookie-monorepo/eslint-config-custom",
+    "version": "0.0.0",
+    "private": true,
+    "main": "index.mjs",
+    "type": "module",
+    "dependencies": {
+      "@eslint/eslintrc": "^3.1.0",
+      "eslint-config-next": "^14.2.4", 
+      "eslint-config-turbo": "^2.0.4"
+    }
+  }\n### tsconfig.json (kanbanFlow) ###
+{
+  "extends": "@wookie-monorepo/tsconfig/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+  
